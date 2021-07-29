@@ -1,5 +1,8 @@
 {
-  "ignorePatterns": ["dist", "node_modules"],
+  "ignorePatterns": [
+    "dist",
+    "node_modules"
+  ],
   "rules": {
     "prettier/prettier": [
       "error",
@@ -12,7 +15,12 @@
     "browser": true,
     "es6": true
   },
-  "extends": ["eslint:recommended", "airbnb", "airbnb/hooks", "prettier"],
+  "extends": [
+    "eslint:recommended",
+    "airbnb",
+    "airbnb/hooks",
+    "prettier"
+  ],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -21,7 +29,10 @@
     "ecmaVersion": 11,
     "sourceType": "module"
   },
-  "plugins": ["react","prettier"],
+  "plugins": [
+    "react",
+    "prettier"
+  ],
   "settings": {
     "import/resolver": {
       "webpack": {

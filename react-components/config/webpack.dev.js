@@ -19,7 +19,7 @@ module.exports = merge(common, {
     hot: true,
     port: 8080,
   },
-
+  target: 'web',
   module: {
     rules: [
       // Styles: Inject CSS into the head with source maps

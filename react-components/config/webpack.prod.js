@@ -7,7 +7,7 @@ const common = require('./webpack.common.js')
 
 module.exports = merge(common, {
   mode: 'production',
-  devtool: false,
+  devtool: 'source-map',
   output: {
     path: paths.build,
     publicPath: '/',
@@ -23,7 +23,7 @@ module.exports = merge(common, {
             loader: 'css-loader',
             options: {
               importLoaders: 2,
-              sourceMap: false,
+              sourceMap: true,
               modules: true,
             },
           },

@@ -4,12 +4,6 @@
     "node_modules"
   ],
   "rules": {
-    "prettier/prettier": [
-      "error",
-      {
-        "endOfLine": "auto"
-      }
-    ],
     "react/jsx-sort-props": 1
   },
   "env": {

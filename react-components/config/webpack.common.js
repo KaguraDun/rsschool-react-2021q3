@@ -9,7 +9,18 @@ const paths = require('./paths');
 module.exports = {
   // Where webpack looks to start building the bundle
   entry: [`${paths.src  }/index.jsx`],
-
+  cache: {
+    // 1. Set cache type to filesystem
+    type: "filesystem",
+    
+    buildDependencies: {
+      // 2. Add your config as buildDependency to get cache invalidation on config change
+      config: [__filename]
+    
+      // 3. If you have other things the build depends on you can add them here
+      // Note that webpack, loaders and all modules referenced from your config are automatically added
+    }
+  },
   // Where webpack outputs the assets and bundles
   output: {
     path: paths.build,
@@ -49,13 +60,21 @@ module.exports = {
     new ESLintPlugin({
       files: ['.', 'src', 'config'],
       extensions: ['js', 'jsx'],
+      cache: true,
+      cacheLocation:'node_modules/.cache/eslint/.eslintcache',
     }),
   ],
   // Determine how modules within the project are treated
   module: {
     rules: [
       // JavaScript: Use Babel to transpile JavaScript files
-      { test: /\.(js|jsx)$/, use: ['babel-loader'] },
+      {
+        test: /\.(js|jsx)$/,
+        use: {
+          loader: 'babel-loader',
+          options: { cacheDirectory: true },
+        },
+      },
 
       // Images: Copy image files to build folder
       { test: /\.(?:ico|gif|png|jpg|jpeg)$/i, type: 'asset/resource' },

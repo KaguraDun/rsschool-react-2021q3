@@ -6,11 +6,6 @@
   ],
   "plugins": ["stylelint-order", "stylelint-scss"],
   "rules": {
-    "prettier/prettier": [
-      "error",
-      {
-        "endOfLine": "auto"
-      }
-    ]
+    "prettier/prettier": true
   }
 }

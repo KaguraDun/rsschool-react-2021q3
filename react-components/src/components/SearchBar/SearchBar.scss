@@ -1,0 +1,34 @@
+$focusColor: lightskyblue;
+
+.searchBar {
+  position: relative;
+  display: flex;
+  width: 50%;
+  height: 50px;
+}
+
+.searchIconWrapper {
+  position: absolute;
+  left: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.input {
+  width: 100%;
+  border-radius: 25px;
+  font-size: 20px;
+  padding: 0 15px 0 50px;
+
+  &:hover,
+  &:focus {
+    border: 2px solid $focusColor;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px $focusColor;
+  }
+}

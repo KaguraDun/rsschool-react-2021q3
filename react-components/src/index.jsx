@@ -1,5 +1,11 @@
-import './styles/index.scss';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import styles from './styles/index.scss';
+import SearchBar from './components/SearchBar/SearchBar';
 
-ReactDOM.render(<h1>Hello, world!</h1>, document.getElementById('root'));
+ReactDOM.render(
+  <div className={styles.container}>
+    <SearchBar />
+  </div>,
+  document.getElementById('root')
+);

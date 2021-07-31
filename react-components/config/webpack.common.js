@@ -2,6 +2,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const StylelintPlugin = require('stylelint-webpack-plugin');
 
 const paths = require('./paths');
 
@@ -62,6 +63,8 @@ module.exports = {
       cache: true,
       cacheLocation:'node_modules/.cache/eslint/.eslintcache',
     }),
+
+    new StylelintPlugin(),
   ],
   // Determine how modules within the project are treated
   module: {

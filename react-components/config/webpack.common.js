@@ -64,7 +64,7 @@ module.exports = {
       cacheLocation:'node_modules/.cache/eslint/.eslintcache',
     }),
 
-    new StylelintPlugin(),
+    new StylelintPlugin({fix:true}),
   ],
   // Determine how modules within the project are treated
   module: {

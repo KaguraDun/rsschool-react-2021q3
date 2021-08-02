@@ -4,7 +4,9 @@
     "node_modules"
   ],
   "rules": {
-    "react/jsx-sort-props": 1
+    "react/jsx-sort-props": 1,
+    "simple-import-sort/imports": 2,
+    "simple-import-sort/exports": 2,
   },
   "env": {
     "browser": true,
@@ -26,7 +28,8 @@
   },
   "plugins": [
     "react",
-    "prettier"
+    "prettier",
+    "simple-import-sort"
   ],
   "settings": {
     "import/resolver": {

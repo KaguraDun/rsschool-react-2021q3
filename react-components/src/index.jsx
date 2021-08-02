@@ -4,8 +4,10 @@ import styles from './styles/index.scss';
 import SearchBar from './components/SearchBar/SearchBar';
 
 ReactDOM.render(
-  <div className={styles.container}>
-    <SearchBar />
+  <div className={style.container}>
+    <div className={style.SearchBarWrapper}>
+      <SearchBar />
+    </div>
   </div>,
   document.getElementById('root')
 );

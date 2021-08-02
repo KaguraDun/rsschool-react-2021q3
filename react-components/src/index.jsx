@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import styles from './styles/index.scss';
+import style from './styles/index.scss';
 import SearchBar from './components/SearchBar/SearchBar';
 import CardList from './components/CardList/CardList';
 import cardData from './model/cardData';

@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import style from './Card.scss';
+
 import Like from '../Like/Like';
+import style from './Card.scss';
 
 const Card = ({ cardData }) => (
   <article className={style.card}>

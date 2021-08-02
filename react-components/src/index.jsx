@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import style from './styles/index.scss';
-import SearchBar from './components/SearchBar/SearchBar';
+
 import CardList from './components/CardList/CardList';
+import SearchBar from './components/SearchBar/SearchBar';
 import cardData from './model/cardData';
+import style from './styles/index.scss';
 
 ReactDOM.render(
   <div className={style.container}>

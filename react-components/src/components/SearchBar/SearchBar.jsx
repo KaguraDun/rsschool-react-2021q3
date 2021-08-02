@@ -1,7 +1,7 @@
 import React from 'react';
-import style from './SearchBar.scss';
 
 import SearchIcon from './icons/search-icon.svg';
+import style from './SearchBar.scss';
 
 const SearchBar = () => (
   <div className={style.searchBar}>

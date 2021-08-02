@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import style from './CardList.scss';
+
 import Card from '../Card/Card';
+import style from './CardList.scss';
 
 const CardList = ({cardData}) => (
   <div className={style.cardsContainer}>

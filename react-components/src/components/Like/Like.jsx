@@ -1,6 +1,7 @@
 import React from 'react';
-import style from './like.scss';
+
 import LikeIcon from './icons/like.svg';
+import style from './like.scss';
 
 // eslint-disable-next-line react/prop-types
 const Like = ({ likesNumber }) => (

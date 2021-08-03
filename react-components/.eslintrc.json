@@ -6,7 +6,7 @@
   "rules": {
     "react/jsx-sort-props": 1,
     "simple-import-sort/imports": 2,
-    "simple-import-sort/exports": 2,
+    "simple-import-sort/exports": 2
   },
   "env": {
     "browser": true,

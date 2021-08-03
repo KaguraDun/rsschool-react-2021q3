@@ -1,0 +1,41 @@
+{
+  "ignorePatterns": [
+    "dist",
+    "node_modules"
+  ],
+  "rules": {
+    "react/jsx-sort-props": 1,
+    "simple-import-sort/imports": 2,
+    "simple-import-sort/exports": 2
+  },
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "airbnb",
+    "airbnb/hooks",
+    "prettier"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+    "ecmaVersion": 11,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react",
+    "prettier",
+    "simple-import-sort"
+  ],
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "config/webpack.common.js"
+      }
+    }
+  }
+}

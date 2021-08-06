@@ -84,8 +84,15 @@ module.exports = {
       // Fonts and SVGs: Inline files
       { test: /\.(woff(2)?|eot|ttf|otf)$/, type: 'asset/inline' },
       {
-        test: /\.svg$/, use: ['@svgr/webpack'],
-      }
+        test: /\.svg$/,
+        issuer: /\.(js)x?$/,
+        use: ['@svgr/webpack']
+    },
+    {
+       test: /\.svg$/,
+        issuer: /\.(css|scss)$/,
+        type: 'asset/resource'
+    }
     ],
   },
 

@@ -1,0 +1,25 @@
+$cardBorder: lightskyblue;
+
+.card {
+  max-width: 200px;
+  font-family: Calibri, Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif;
+  border: 1px solid $cardBorder;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 5px;
+}
+
+.title {
+  margin: 0;
+  margin-bottom: 5px;
+  overflow: hidden;
+}
+
+.item {
+  margin: 0 0 5px 0;
+  font-size: 18px;
+}

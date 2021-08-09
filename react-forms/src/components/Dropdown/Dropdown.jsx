@@ -4,16 +4,21 @@ import React from 'react';
 import style from './Dropdown.scss';
 
 const Option = ({ options }) =>
-  Object.values(options).map(({ value, name },index) => (
+  Object.values(options).map(({ value, name }, index) => (
     <option key={`option${value}`} value={index}>
       {name}
     </option>
   ));
 
-const Dropdown = ({ options, label, handleOnChange }) => (
+const Dropdown = ({ options, label, handleOnChange, value }) => (
   <label className={style.label}>
     {label}
-    <select className={style.dropdown} name={label} onChange={handleOnChange}>
+    <select
+      className={style.dropdown}
+      name={label}
+      onChange={handleOnChange}
+      value={value}
+    >
       <Option options={options} />
     </select>
   </label>

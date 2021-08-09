@@ -3,9 +3,10 @@ import React from 'react';
 
 import style from './Checkbox.scss';
 
-const Checkbox = ({ label, handleOnChange }) => (
+const Checkbox = ({ label, handleOnChange, checked }) => (
   <label className={style.label}>
     <input
+      checked={checked}
       className={style.checkbox}
       onChange={handleOnChange}
       type="checkbox"

@@ -1,12 +1,8 @@
+import './styles/index.scss';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import CardForm from './components/CardForm/CardForm';
-import style from './styles/index.scss';
+import App from './components/App/App';
 
-ReactDOM.render(
-  <div className={style.container}>
-    <CardForm />
-  </div>,
-  document.getElementById('root')
-);
+ReactDOM.render(<App />, document.getElementById('root'));

@@ -3,10 +3,10 @@ import React from 'react';
 
 import style from './Input.scss';
 
-const Input = ({ type, label }) => (
+const Input = ({ type, label, handleOnChange }) => (
   <label className={style.label}>
     {label}
-    <input className={style.input} type={type} />
+    <input className={style.input} onChange={handleOnChange} type={type} />
   </label>
 );
 

@@ -10,7 +10,7 @@ const App = () => {
   const [cardItems, setCardItems] = useState([]);
 
   const createCard = (formData) => {
-    setCardItems([...cardItems, formData]);
+    setCardItems([formData, ...cardItems]);
   };
 
   return (

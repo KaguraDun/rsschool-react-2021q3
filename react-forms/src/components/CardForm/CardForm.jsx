@@ -1,31 +1,82 @@
-import React from 'react';
+/* eslint-disable react/prop-types */
+import React, { useState } from 'react';
 
-import Checkbox from '../Checkbox/Checkbox';
+import CheckboxGroup from '../CheckboxGroup/CheckboxGroup';
 import Dropdown from '../Dropdown/Dropdown';
 import Input from '../Input/Input';
 import Switch from '../Switch/Switch';
 import style from './CardForm.scss';
 
-const CardForm = () => (
-  <form action="" className={style.form}>
-    <Input label="Имя" type="text" />
-    <Input label="Дата доставки" type="date" />
-    <Dropdown
-      label="Выберите шаурму:"
-      options={[
-        { value: 'chicken', name: 'С курицей' },
-        { value: 'pork', name: 'Со свининой' },
-        { value: 'vegan', name: 'С овощами' },
-      ]}
-    />
-    <fieldset className={style.checkboxFieldset}>
-      <legend className={style.checkboxLegend}>Дополнительная начинка:</legend>
-      <Checkbox label="Сыр" />
-      <Checkbox label="Картофель фри" />
-      <Checkbox label="Сырный лаваш" />
-    </fieldset>
-    <Switch label="Получать уведомления?" />
-  </form>
-);
+const CardForm = ({ foodOptions, toppingsOptions, createCard }) => {
+  const [orderID, setOrderID] = useState(0);
+  const [customerName, setCustomerName] = useState('');
+  const [contactNumber, setContactNumber] = useState('');
+  const [deliveryDate, setDeliveryDate] = useState('');
+  const [foodID, setFoodID] = useState(0);
+  const [toppings, setToppings] = useState(
+    new Array(Object.keys(toppingsOptions).length).fill(false)
+  );
+  const [subscribe, setSubscribe] = useState(false);
+
+  const updateToppings = (id) => {
+    const newToppings = toppings.map((item, index) =>
+      index === id ? !item : item
+    );
+    setToppings(newToppings);
+  };
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+
+    createCard({
+      orderID,
+      customerName,
+      contactNumber,
+      deliveryDate,
+      foodID,
+      toppings,
+      subscribe,
+    });
+
+    setOrderID(orderID + 1);
+  };
+
+  return (
+    <form action="" className={style.form} onSubmit={handleOnSubmit}>
+      <Input
+        handleOnChange={(e) => setCustomerName(e.target.value)}
+        label="Имя"
+        type="text"
+      />
+      <Input
+        handleOnChange={(e) => setContactNumber(e.target.value)}
+        label="Контактный телефон"
+        type="tel"
+      />
+      <Input
+        handleOnChange={(e) => setDeliveryDate(e.target.value)}
+        label="Дата доставки"
+        type="date"
+      />
+      <Dropdown
+        handleOnChange={(e) => setFoodID(e.target.value)}
+        label="Выберите шаурму:"
+        options={foodOptions}
+      />
+      <CheckboxGroup
+        handleOnChange={updateToppings}
+        legend="Дополнительная начинка:"
+        options={toppingsOptions}
+      />
+      <Switch
+        handleOnChange={(e) => setSubscribe(e.target.checked)}
+        label="Получать уведомления?"
+      />
+      <button className={style.buttonSubmit} type="submit">
+        Отправить
+      </button>
+    </form>
+  );
+};
 
 export default CardForm;

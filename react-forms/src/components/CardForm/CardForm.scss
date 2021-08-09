@@ -13,17 +13,7 @@
   }
 }
 
-.checkboxFieldset {
+.buttonSubmit {
   width: 100%;
-  margin: 0;
-  padding: 0;
-  border: 0;
-
-  & > * {
-    margin-bottom: 5px;
-  }
-}
-
-.checkboxLegend {
-  margin: 0 0 5px 0;
+  font-size: 20px;
 }

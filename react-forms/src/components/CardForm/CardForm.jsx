@@ -21,6 +21,7 @@ const CardForm = ({ foodOptions, toppingsOptions, createCard }) => {
   const [foodID, setFoodID] = useState(0);
   const [toppings, setToppings] = useState(toppingsStateArr);
   const [subscribe, setSubscribe] = useState(false);
+  const [errors, setErrors] = useState({});
 
   const updateToppings = (id) => {
     const newToppings = toppings.map((item, index) =>
@@ -36,10 +37,34 @@ const CardForm = ({ foodOptions, toppingsOptions, createCard }) => {
     setFoodID(0);
     setToppings(toppingsStateArr);
     setSubscribe(false);
+    setErrors({});
+  };
+
+  const phoneNumberRegex = /^((8|\+7)[- ]?)?(\(?\d{3}\)?[- ]?)?[\d\- ]{7,10}$/;
+  const errorsList = {
+    name: (value) => value.length > 1 && value.length < 15,
+    number: (value) => phoneNumberRegex.test(value),
+    date: (value) => value >= todayISO,
+  };
+
+  const validate = () => {
+    const testErrors = {};
+
+    if (!errorsList.name(customerName)) testErrors.name = true;
+    if (!errorsList.number(contactNumber)) testErrors.number = true;
+    if (!errorsList.date(deliveryDate)) testErrors.date = true;
+
+    return testErrors;
   };
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
+
+    const testErrors = validate();
+    if (Object.keys(testErrors).length > 0) {
+      setErrors(testErrors);
+      return;
+    }
 
     createCard({
       orderID,
@@ -59,18 +84,21 @@ const CardForm = ({ foodOptions, toppingsOptions, createCard }) => {
   return (
     <form action="" className={style.form} onSubmit={handleOnSubmit}>
       <Input
+        error={errors.name ? 'Имя от 1 до 15 символов' : false}
         handleOnChange={(e) => setCustomerName(e.target.value)}
         label="Имя"
         type="text"
         value={customerName}
       />
       <Input
+        error={errors.number ? 'Некорректный формат' : false}
         handleOnChange={(e) => setContactNumber(e.target.value)}
         label="Контактный телефон"
         type="tel"
         value={contactNumber}
       />
       <Input
+        error={errors.date ? 'У нас нет машины времени!' : false}
         handleOnChange={(e) => setDeliveryDate(e.target.value)}
         label="Дата доставки"
         type="date"

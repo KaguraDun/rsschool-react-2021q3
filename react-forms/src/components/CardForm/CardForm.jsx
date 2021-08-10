@@ -12,10 +12,12 @@ const CardForm = ({ foodOptions, toppingsOptions, createCard }) => {
     false
   );
 
+  const todayISO = new Date().toISOString().substring(0, 10);
+
   const [orderID, setOrderID] = useState(0);
   const [customerName, setCustomerName] = useState('');
   const [contactNumber, setContactNumber] = useState('');
-  const [deliveryDate, setDeliveryDate] = useState('');
+  const [deliveryDate, setDeliveryDate] = useState(todayISO);
   const [foodID, setFoodID] = useState(0);
   const [toppings, setToppings] = useState(toppingsStateArr);
   const [subscribe, setSubscribe] = useState(false);
@@ -30,7 +32,7 @@ const CardForm = ({ foodOptions, toppingsOptions, createCard }) => {
   const reset = () => {
     setCustomerName('');
     setContactNumber('');
-    setDeliveryDate('');
+    setDeliveryDate(todayISO);
     setFoodID(0);
     setToppings(toppingsStateArr);
     setSubscribe(false);

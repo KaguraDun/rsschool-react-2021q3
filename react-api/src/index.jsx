@@ -1,9 +1,8 @@
+import './styles/index.scss';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import style from './styles/index.scss';
+import App from './components/App/App';
 
-ReactDOM.render(
-  <div className={style.container} />,
-  document.getElementById('root')
-);
+ReactDOM.render(<App />, document.getElementById('root'));

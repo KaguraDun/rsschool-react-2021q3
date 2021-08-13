@@ -1,0 +1,19 @@
+.options {
+  display: flex;
+  gap: 15px;
+  justify-content: space-around;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.select {
+  height: 100%;
+}
+
+.input {
+  width: 50px;
+}

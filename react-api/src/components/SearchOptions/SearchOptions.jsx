@@ -43,7 +43,7 @@ const SearchOptions = ({ handleOptionChange, options, maxPages }) => (
       {'<'}
     </button>
     <label className={style.label}>
-      Cur page {}
+      Page/max:{maxPages || '?'}
       <input
         className={style.input}
         max={maxPages}

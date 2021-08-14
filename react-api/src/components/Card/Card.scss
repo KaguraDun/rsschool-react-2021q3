@@ -1,4 +1,6 @@
-$cardBorder: lightskyblue;
+@import '../../styles/variables';
+
+$cardBorder: $primary;
 
 .card {
   width: 250px;

@@ -28,45 +28,47 @@ const SearchOptions = ({ handleOptionChange, options, maxPages }) => (
         value={options.resultsPerPage}
       />
     </label>
-    <button
-      className={style.button}
-      onClick={() =>
-        handleOptionChange(
-          'currentPage',
-          options.currentPage - 1 > 0
-            ? options.currentPage - 1
-            : options.currentPage
-        )
-      }
-      type="button"
-    >
-      {'<'}
-    </button>
-    <label className={style.label}>
-      Page/max:{maxPages || '?'}
-      <input
-        className={style.input}
-        max={maxPages}
-        min="1"
-        onChange={(e) => handleOptionChange('currentPage', e.target.value)}
-        type="number"
-        value={options.currentPage}
-      />
-    </label>
-    <button
-      className={style.button}
-      onClick={() =>
-        handleOptionChange(
-          'currentPage',
-          options.currentPage + 1 <= maxPages
-            ? options.currentPage + 1
-            : options.currentPage
-        )
-      }
-      type="button"
-    >
-      {'>'}
-    </button>
+    <div className={style.pagination}>
+      <button
+        className={style.button}
+        onClick={() =>
+          handleOptionChange(
+            'currentPage',
+            options.currentPage - 1 > 0
+              ? options.currentPage - 1
+              : options.currentPage
+          )
+        }
+        type="button"
+      >
+        {'<'}
+      </button>
+      <label className={style.label}>
+        Page/max:{maxPages || '?'}
+        <input
+          className={style.input}
+          max={maxPages}
+          min="1"
+          onChange={(e) => handleOptionChange('currentPage', e.target.value)}
+          type="number"
+          value={options.currentPage}
+        />
+      </label>
+      <button
+        className={style.button}
+        onClick={() =>
+          handleOptionChange(
+            'currentPage',
+            options.currentPage + 1 <= maxPages
+              ? options.currentPage + 1
+              : options.currentPage
+          )
+        }
+        type="button"
+      >
+        {'>'}
+      </button>
+    </div>
   </div>
 );
 

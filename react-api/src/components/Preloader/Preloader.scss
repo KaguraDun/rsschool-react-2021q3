@@ -1,3 +1,5 @@
+@import '../../styles/variables';
+
 @keyframes bar-1 {
   0% {
     top: 36px;
@@ -57,21 +59,21 @@
 
 .wrapper div:nth-child(1) {
   left: 40px;
-  background: #93dbe9;
+  background: $primary;
   animation: bar-1 2.2222222222222223s cubic-bezier(0, 0.5, 0.5, 1) infinite;
   animation-delay: -0.4444444444444445s;
 }
 
 .wrapper div:nth-child(2) {
   left: 90px;
-  background: #689cc5;
+  background: $secondary;
   animation: bar-2 2.2222222222222223s cubic-bezier(0, 0.5, 0.5, 1) infinite;
   animation-delay: -0.22222222222222224s;
 }
 
 .wrapper div:nth-child(3) {
   left: 140px;
-  background: #5e6fa3;
+  background: $secondary-dark;
   animation: bar-3 2.2222222222222223s cubic-bezier(0, 0.5, 0.5, 1) infinite;
   animation-delay: undefineds;
 }

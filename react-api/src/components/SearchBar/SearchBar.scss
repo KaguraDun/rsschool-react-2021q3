@@ -1,4 +1,9 @@
-$focusColor: lightskyblue;
+@import '../../styles/variables';
+
+$focusColor: $primary;
+
+$button-bg: transparent;
+$button-hover: $primary;
 
 .searchBar {
   position: relative;
@@ -30,5 +35,20 @@ $focusColor: lightskyblue;
   &:focus {
     outline: none;
     box-shadow: 0 0 0 3px $focusColor;
+  }
+}
+
+.button {
+  position: absolute;
+  right: 0;
+  width: 100px;
+  height: 100%;
+  font-size: 20px;
+  background: $button-bg;
+  border-radius: 0 25px 25px 0;
+  cursor: pointer;
+
+  &:hover {
+    background: $button-hover;
   }
 }

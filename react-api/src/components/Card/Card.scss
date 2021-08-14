@@ -5,6 +5,11 @@ $cardBorder: lightskyblue;
   border: 1px solid $cardBorder;
 }
 
+.thumbnail {
+  width: 100%;
+  height: auto;
+}
+
 .cardContent {
   display: flex;
   flex-direction: column;

@@ -20,10 +20,20 @@ const App = () => {
 
   const getDataFromApi = () => {
     if (searchValue) {
-      apiService.getData(searchValue, searchOptions).then((data) => {
-        setSearchResult(data.photos);
-        setIsLoading(false);
-      });
+      apiService
+        .getData(searchValue, searchOptions)
+        .then(async (data) => {
+          const photo = await Promise.all(apiService.getImages(data, 4));
+          const updatedData = JSON.parse(JSON.stringify(data));
+
+          updatedData.photos.photo = photo;
+          return updatedData;
+        })
+        .then((data) => {
+          setSearchResult(data.photos);
+          setIsLoading(false);
+        })
+        .catch();
     }
   };
 

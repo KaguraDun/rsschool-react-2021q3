@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import ApiService from '../../model/ApiService';
 import CardList from '../CardList/CardList';
-import ApiService from '../model/ApiService';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchOptions from '../SearchOptions/SearchOptions';
 import style from './App.scss';

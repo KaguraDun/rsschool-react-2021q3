@@ -9,6 +9,7 @@ import style from './App.scss';
 const apiService = new ApiService();
 
 const App = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [searchValue, setSearchValue] = useState('');
   const [searchResult, setSearchResult] = useState([]);
   const [searchOptions, setSearchOptions] = useState({
@@ -21,6 +22,7 @@ const App = () => {
     if (searchValue) {
       apiService.getData(searchValue, searchOptions).then((data) => {
         setSearchResult(data.photos);
+        setIsLoading(false);
       });
     }
   };
@@ -28,6 +30,7 @@ const App = () => {
   const handleSearch = (e, text) => {
     e.preventDefault();
     setSearchValue(text);
+    setIsLoading(true);
   };
 
   const handleOptionChange = (option, value) => {
@@ -51,7 +54,7 @@ const App = () => {
           options={searchOptions}
         />
       </div>
-      <CardList items={searchResult.photo || []} />
+      <CardList isLoading={isLoading} items={searchResult.photo || []} />
     </div>
   );
 };

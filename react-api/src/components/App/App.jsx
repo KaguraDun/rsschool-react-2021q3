@@ -24,7 +24,7 @@ const App = () => {
       apiService
         .getData(searchValue, searchOptions)
         .then(async (data) => {
-          const photo = await Promise.all(apiService.getImages(data, 4));
+          const photo = await Promise.all(apiService.getDataWithImages(data, 4));
           const updatedData = JSON.parse(JSON.stringify(data));
 
           updatedData.photos.photo = photo;

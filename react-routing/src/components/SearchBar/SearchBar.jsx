@@ -22,7 +22,7 @@ const SearchBar = ({ handleSearch }) => {
         value={searchValue}
       />
       <button className={style.button} type="submit">
-        Поиск
+        Search
       </button>
     </form>
   );

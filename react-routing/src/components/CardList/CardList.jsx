@@ -9,7 +9,7 @@ const getCards = (items) =>
   items.map((item) => <Card key={`card-${item.id}`} cardData={item} />);
 
 const CardList = ({ items, isLoading, isError }) => {
-  const isDataOk = !isError && !isLoading;
+  const isDataOk = items && !isError && !isLoading;
   const error = isError ? 'Error occured' : null;
   const loading = isLoading ? <Preloader /> : null;
   const notFound = isDataOk && items.length === 0 ? 'Oops nothing found' : null;

@@ -3,6 +3,7 @@
 $input-bg: $primary;
 $border-color: $secondary;
 $button-hover: $secondary;
+$focus-color: $secondary-dark;
 
 .options {
   display: flex;
@@ -26,8 +27,12 @@ $button-hover: $secondary;
   height: 100%;
   margin-top: 10px;
   font-size: inherit;
-  border: 2px solid $border-color;
+  border: 2px solid $focus-color;
   cursor: pointer;
+
+  &:focus {
+    outline: 1px solid $focus-color;
+  }
 }
 
 .input {
@@ -36,6 +41,10 @@ $button-hover: $secondary;
   margin-top: 10px;
   font-size: inherit;
   border: 2px solid $border-color;
+
+  &:focus {
+    outline: 1px solid $border-color;
+  }
 }
 
 .button {

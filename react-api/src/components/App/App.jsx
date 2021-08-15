@@ -10,6 +10,7 @@ const apiService = new ApiService();
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
   const [searchValue, setSearchValue] = useState('');
   const [searchResult, setSearchResult] = useState([]);
   const [searchOptions, setSearchOptions] = useState({
@@ -33,7 +34,10 @@ const App = () => {
           setSearchResult(data.photos);
           setIsLoading(false);
         })
-        .catch();
+        .catch(() => {
+          setIsLoading(false);
+          setIsError(true);
+        });
     }
   };
 
@@ -41,9 +45,12 @@ const App = () => {
     e.preventDefault();
     setSearchValue(text);
     setIsLoading(true);
+    setIsError(false);
   };
 
   const handleOptionChange = (option, value) => {
+    setIsLoading(true);
+    setIsError(false);
     setSearchOptions((options) => ({
       ...options,
       [option]: value,
@@ -64,7 +71,11 @@ const App = () => {
           options={searchOptions}
         />
       </div>
-      <CardList isLoading={isLoading} items={searchResult.photo || []} />
+      <CardList
+        isError={isError}
+        isLoading={isLoading}
+        items={searchResult.photo || []}
+      />
     </div>
   );
 };

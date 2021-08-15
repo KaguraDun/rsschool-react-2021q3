@@ -43,6 +43,8 @@ const App = () => {
 
   const handleSearch = (e, text) => {
     e.preventDefault();
+    if (text === searchValue) return;
+    
     setSearchValue(text);
     setIsLoading(true);
     setIsError(false);

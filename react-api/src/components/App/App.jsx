@@ -74,7 +74,7 @@ const App = () => {
       <CardList
         isError={isError}
         isLoading={isLoading}
-        items={searchResult.photo || []}
+        items={searchResult.photo}
       />
     </div>
   );

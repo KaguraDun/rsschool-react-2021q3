@@ -26,7 +26,7 @@ class ApiService {
     return data;
   }
 
-  getImages(data, imageQuality) {
+  getDataWithImages(data, imageQuality) {
     return data.photos.photo.map(async (item) => {
       const imgData = await this.getImage(item.id);
       const imgUrl = imgData.sizes.size[imageQuality].source;

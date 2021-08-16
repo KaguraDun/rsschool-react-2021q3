@@ -5,15 +5,17 @@ import Card from '../Card/Card';
 import Preloader from '../Preloader/Preloader';
 import style from './CardList.scss';
 
-const getCards = (items) =>
-  items.map((item) => <Card key={`card-${item.id}`} cardData={item} />);
+const getCards = (items, linkUrl) =>
+  items.map((item) => (
+    <Card key={`card-${item.id}`} cardData={item} linkUrl={linkUrl} />
+  ));
 
-const CardList = ({ items, isLoading, isError }) => {
+const CardList = ({ items, isLoading, isError, linkUrl }) => {
   const isDataOk = items && !isError && !isLoading;
   const error = isError ? 'Error occured' : null;
   const loading = isLoading ? <Preloader /> : null;
   const notFound = isDataOk && items.length === 0 ? 'Oops nothing found' : null;
-  const cards = isDataOk ? getCards(items) : null;
+  const cards = isDataOk ? getCards(items, linkUrl) : null;
 
   return (
     <div className={style.wrapper}>

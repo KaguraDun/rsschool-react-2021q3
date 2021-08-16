@@ -12,7 +12,7 @@ const getCards = (items, linkUrl) =>
 
 const CardList = ({ items, isLoading, isError, linkUrl }) => {
   const isDataOk = items && !isError && !isLoading;
-  const error = isError ? 'Error occured' : null;
+  const error = isError ? 'Error occurred' : null;
   const loading = isLoading ? <Preloader /> : null;
   const notFound = isDataOk && items.length === 0 ? 'Oops nothing found' : null;
   const cards = isDataOk ? getCards(items, linkUrl) : null;

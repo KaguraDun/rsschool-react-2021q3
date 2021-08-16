@@ -1,0 +1,38 @@
+@import '../../styles/variables';
+$header-bg: $primary;
+$link-bg-hover: $secondary;
+$link-color-hover: $white;
+
+.header {
+  width: 100%;
+  background: $header-bg;
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  list-style-type: none;
+}
+
+.navItem {
+  min-width: 100px;
+}
+
+.navLink {
+  display: block;
+  font-size: 22px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+
+  &:visited {
+    color: inherit;
+  }
+
+  &:hover {
+    color: $link-color-hover;
+    background: $link-bg-hover;
+  }
+}

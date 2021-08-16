@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import ApiService from '../../model/ApiService';
+import ApiService from '../../services/ApiService';
+import About from '../About/About';
 import CardList from '../CardList/CardList';
+import Details from '../Details/Details';
+import Header from '../Header/Header';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchOptions from '../SearchOptions/SearchOptions';
 import style from './App.scss';
@@ -24,7 +28,9 @@ const App = () => {
       apiService
         .getData(searchValue, searchOptions)
         .then(async (data) => {
-          const photo = await Promise.all(apiService.getDataWithImages(data, 4));
+          const photo = await Promise.all(
+            apiService.getDataWithImages(data, 4)
+          );
           const updatedData = JSON.parse(JSON.stringify(data));
 
           updatedData.photos.photo = photo;
@@ -44,7 +50,7 @@ const App = () => {
   const handleSearch = (e, text) => {
     e.preventDefault();
     if (text === searchValue) return;
-    
+
     setSearchValue(text);
     setIsLoading(true);
     setIsError(false);
@@ -61,7 +67,7 @@ const App = () => {
 
   useEffect(getDataFromApi, [searchOptions, searchValue]);
 
-  return (
+  const Home = () => (
     <div className={style.container}>
       <div className={style.searchBarWrapper}>
         <SearchBar handleSearch={handleSearch} />
@@ -77,8 +83,25 @@ const App = () => {
         isError={isError}
         isLoading={isLoading}
         items={searchResult.photo}
+        linkUrl="/details"
       />
     </div>
+  );
+
+  return (
+    <Router>
+      <Header />
+      <Route component={Home} exact path="/" />
+      <Route component={About} exact path="/about" />
+      <Route
+        component={({ match }) => {
+          const { id } = match.params;
+          return <Details apiService={apiService} itemId={id} />;
+        }}
+        exact
+        path="/details/:id"
+      />
+    </Router>
   );
 };
 

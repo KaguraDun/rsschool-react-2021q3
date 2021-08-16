@@ -5,6 +5,7 @@ class ApiService {
     this.methods = {
       photo: '?method=flickr.photos.search',
       getSize: '?method=flickr.photos.getSizes',
+      getInfo: '?method=flickr.photos.getInfo',
     };
   }
 
@@ -33,6 +34,15 @@ class ApiService {
 
       return { ...item, url: imgUrl };
     });
+  }
+
+  async getInfo(id) {
+    const res = await fetch(
+      `${this.apiURl}${this.methods.getInfo}${this.apiKey}&photo_id=${id}&format=json&nojsoncallback=1`
+    );
+    const data = await res.json();
+
+    return data;
   }
 }
 

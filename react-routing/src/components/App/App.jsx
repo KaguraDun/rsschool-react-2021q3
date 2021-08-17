@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import ApiService from '../../services/ApiService';
 import About from '../About/About';
 import CardList from '../CardList/CardList';
 import Details from '../Details/Details';
 import Header from '../Header/Header';
+import PageNotFound from '../PageNotFound/PageNotFound';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchOptions from '../SearchOptions/SearchOptions';
 import style from './App.scss';
@@ -91,16 +92,19 @@ const App = () => {
   return (
     <Router>
       <Header />
-      <Route component={Home} exact path="/" />
-      <Route component={About} exact path="/about" />
-      <Route
-        component={({ match }) => {
-          const { id } = match.params;
-          return <Details apiService={apiService} itemId={id} />;
-        }}
-        exact
-        path="/details/:id"
-      />
+      <Switch>
+        <Route component={Home} exact path="/" />
+        <Route component={About} exact path="/about" />
+        <Route
+          component={({ match }) => {
+            const { id } = match.params;
+            return <Details apiService={apiService} itemId={id} />;
+          }}
+          exact
+          path="/details/:id"
+        />
+        <Route component={PageNotFound} />
+      </Switch>
     </Router>
   );
 };

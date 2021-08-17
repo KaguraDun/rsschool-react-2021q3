@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  useLocation,
+} from 'react-router-dom';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import ApiService from '../../services/ApiService';
 import About from '../About/About';
@@ -89,22 +95,44 @@ const App = () => {
     </div>
   );
 
+  const PageContent = () => {
+    const location = useLocation();
+
+    return (
+      <TransitionGroup>
+        <CSSTransition
+          key={location.key}
+          classNames={{
+            enter: style.pageEnter,
+            enterActive: style.pageEnterActive,
+            exit: style.pageExit,
+            exitActive: style.pageExitActive,
+          }}
+          timeout={300}
+          unmountOnExit
+        >
+          <Switch location={location}>
+            <Route component={Home} exact path="/" />
+            <Route component={About} exact path="/about" />
+            <Route
+              component={({ match }) => {
+                const { id } = match.params;
+                return <Details apiService={apiService} itemId={id} />;
+              }}
+              exact
+              path="/details/:id"
+            />
+            <Route component={PageNotFound} />
+          </Switch>
+        </CSSTransition>
+      </TransitionGroup>
+    );
+  };
+
   return (
     <Router>
       <Header />
-      <Switch>
-        <Route component={Home} exact path="/" />
-        <Route component={About} exact path="/about" />
-        <Route
-          component={({ match }) => {
-            const { id } = match.params;
-            return <Details apiService={apiService} itemId={id} />;
-          }}
-          exact
-          path="/details/:id"
-        />
-        <Route component={PageNotFound} />
-      </Switch>
+      <PageContent />
     </Router>
   );
 };

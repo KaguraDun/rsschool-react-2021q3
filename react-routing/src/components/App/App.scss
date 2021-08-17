@@ -23,3 +23,33 @@
 .searchOptionsWrapper {
   margin-bottom: 20px;
 }
+
+//animation
+
+.page {
+  position: absolute;
+  right: 15px;
+  left: 15px;
+}
+
+.pageEnter {
+  transform: scale(1.1);
+  opacity: 0;
+}
+
+.pageEnterActive {
+  transform: scale(1);
+  opacity: 1;
+  transition: opacity 300ms, transform 300ms;
+}
+
+.pageExit {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.pageExitActive {
+  transform: scale(0.9);
+  opacity: 0;
+  transition: opacity 300ms, transform 300ms;
+}

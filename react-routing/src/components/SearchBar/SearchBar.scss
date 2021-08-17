@@ -1,10 +1,5 @@
 @import '../../styles/variables';
 
-$focusColor: $primary;
-
-$button-bg: transparent;
-$button-hover: $primary;
-
 .searchBar {
   position: relative;
   display: flex;
@@ -29,12 +24,12 @@ $button-hover: $primary;
 
   &:hover,
   &:focus {
-    border: 2px solid $focusColor;
+    border: 2px solid $primary;
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 3px $focusColor;
+    box-shadow: 0 0 0 3px $primary;
   }
 }
 
@@ -44,11 +39,11 @@ $button-hover: $primary;
   width: 100px;
   height: 100%;
   font-size: 20px;
-  background: $button-bg;
+  background: transparent;
   border-radius: 0 25px 25px 0;
   cursor: pointer;
 
   &:hover {
-    background: $button-hover;
+    background: $primary;
   }
 }

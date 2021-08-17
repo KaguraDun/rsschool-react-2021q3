@@ -1,10 +1,5 @@
 @import '../../styles/variables';
 
-$input-bg: $primary;
-$border-color: $secondary;
-$button-hover: $secondary;
-$focus-color: $secondary-dark;
-
 .options {
   display: flex;
   gap: 15px;
@@ -27,11 +22,11 @@ $focus-color: $secondary-dark;
   height: 100%;
   margin-top: 10px;
   font-size: inherit;
-  border: 2px solid $focus-color;
+  border: 2px solid $secondary-dark;
   cursor: pointer;
 
   &:focus {
-    outline: 1px solid $focus-color;
+    outline: 1px solid $secondary-dark;
   }
 }
 
@@ -40,10 +35,10 @@ $focus-color: $secondary-dark;
   height: 100%;
   margin-top: 10px;
   font-size: inherit;
-  border: 2px solid $border-color;
+  border: 2px solid $secondary;
 
   &:focus {
-    outline: 1px solid $border-color;
+    outline: 1px solid $secondary;
   }
 }
 
@@ -58,6 +53,7 @@ $focus-color: $secondary-dark;
   cursor: pointer;
 
   &:hover {
-    color: $button-hover;
+    color: $white;
+    background: $secondary-dark;
   }
 }

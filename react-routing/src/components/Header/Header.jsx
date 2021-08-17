@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import style from './Header.scss';
 
@@ -8,14 +8,23 @@ const Header = () => (
     <nav className={style.nav}>
       <ul className={style.navList}>
         <li className={style.navItem}>
-          <Link className={style.navLink} to="/">
+          <NavLink
+            activeClassName={style.selected}
+            className={style.navLink}
+            exact
+            to="/"
+          >
             Home
-          </Link>
+          </NavLink>
         </li>
         <li className={style.navItem}>
-          <Link className={style.navLink} to="/about">
+          <NavLink
+            activeClassName={style.selected}
+            className={style.navLink}
+            to="/about"
+          >
             About
-          </Link>
+          </NavLink>
         </li>
       </ul>
     </nav>

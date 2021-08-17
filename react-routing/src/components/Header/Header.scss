@@ -1,11 +1,8 @@
 @import '../../styles/variables';
-$header-bg: $primary;
-$link-bg-hover: $secondary;
-$link-color-hover: $white;
 
 .header {
   width: 100%;
-  background: $header-bg;
+  background: $primary;
 }
 
 .navList {
@@ -28,11 +25,16 @@ $link-color-hover: $white;
   text-decoration: none;
 
   &:visited {
-    color: inherit;
+    color: $black;
   }
 
   &:hover {
-    color: $link-color-hover;
-    background: $link-bg-hover;
+    color: $white;
+    background: $secondary;
+  }
+
+  &.selected {
+    color: $white;
+    background: $secondary;
   }
 }

@@ -38,7 +38,8 @@
     "eslint:recommended",
     "airbnb",
     "airbnb/hooks",
-    "prettier"
+    "prettier",
+    "plugin:react-redux/recommended"
   ],
   "globals": {
     "Atomics": "readonly",
@@ -51,7 +52,8 @@
   "plugins": [
     "react",
     "prettier",
-    "simple-import-sort"
+    "simple-import-sort",
+    "react-redux"
   ],
   "settings": {
     "import/resolver": {

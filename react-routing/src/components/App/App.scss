@@ -5,23 +5,7 @@
   justify-content: space-evenly;
   max-width: 1440px;
   margin: 0 auto;
-}
-
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  width: 250px;
-  height: 80%;
-}
-
-.searchBarWrapper {
-  width: 80%;
-  margin: 20px 0;
-}
-
-.searchOptionsWrapper {
-  margin-bottom: 20px;
+  padding: 0 15px;
 }
 
 //animation

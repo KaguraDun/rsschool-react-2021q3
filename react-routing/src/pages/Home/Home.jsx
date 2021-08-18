@@ -20,6 +20,9 @@ const Home = ({ apiService }) => {
 
   const getDataFromApi = () => {
     if (searchValue) {
+      setIsLoading(true);
+      setIsError(false);
+
       apiService
         .getData(searchValue, searchOptions)
         .then(async (data) => {
@@ -47,13 +50,9 @@ const Home = ({ apiService }) => {
     if (text === searchValue) return;
 
     setSearchValue(text);
-    setIsLoading(true);
-    setIsError(false);
   };
 
   const handleOptionChange = (option, value) => {
-    setIsLoading(true);
-    setIsError(false);
     setSearchOptions((options) => ({
       ...options,
       [option]: value,

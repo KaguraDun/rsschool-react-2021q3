@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-import Card from '../Card/Card';
-import Preloader from '../Preloader/Preloader';
+import Card from '@/components/Card/Card';
+import Preloader from '@/components/Preloader/Preloader';
+
 import style from './CardList.scss';
 
 const getCards = (items, linkUrl) =>

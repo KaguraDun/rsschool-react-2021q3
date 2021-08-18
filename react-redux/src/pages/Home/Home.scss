@@ -1,0 +1,15 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.searchBarWrapper {
+  width: 80%;
+  margin: 20px 0;
+}
+
+.searchOptionsWrapper {
+  margin-bottom: 20px;
+}

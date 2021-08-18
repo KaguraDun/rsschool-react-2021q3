@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 
-import Preloader from '../Preloader/Preloader';
+import Preloader from '@/components/Preloader/Preloader';
+
 import style from './Details.scss';
 
 const Details = ({ itemId, apiService }) => {

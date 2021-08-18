@@ -25,7 +25,7 @@ const Details = ({ itemId, apiService }) => {
 
   const InfoInJson = () => (
     <code className={style.info}>
-      <pre>{JSON.stringify(info, null, 4)}</pre>
+      <pre className={style.json}>{JSON.stringify(info, null, 4)}</pre>
     </code>
   );
 

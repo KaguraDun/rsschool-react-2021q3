@@ -9,4 +9,12 @@ module.exports = {
 
   // Static files that get copied to build folder
   public: path.resolve(__dirname, '../public'),
+
+  components: path.resolve(__dirname, '../src/components'),
+
+  pages: path.resolve(__dirname, '../src/pages'),
+
+  services:path.resolve(__dirname,'../src/services'),
+
+  styles:path.resolve(__dirname, '../src/styles')
 }

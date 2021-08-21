@@ -1,31 +1,24 @@
+/* eslint-disable react-redux/useSelector-prefer-selectors */
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Preloader from '@/components/Preloader/Preloader';
+import { searchPhotoInfo } from '@/features/details';
 
 import style from './Details.scss';
 
-const Details = ({ itemId, apiService }) => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-  const [info, setInfo] = useState(null);
+const Details = ({ itemId }) => {
+  const dispatch = useDispatch();
+  const photoInfo = useSelector(({ details }) => details.photoInfo);
+  const isLoading = useSelector(({ details }) => details.isLoading);
+  const isError = useSelector(({ details }) => details.isError);
 
-  useEffect(() => {
-    apiService
-      .getInfo(itemId)
-      .then((data) => {
-        setInfo(data.photo);
-        setIsLoading(false);
-      })
-      .catch(() => {
-        setIsLoading(false);
-        setIsError(true);
-      });
-  }, [apiService, itemId]);
+  useEffect(() => dispatch(searchPhotoInfo(itemId)), [dispatch, itemId]);
 
   const InfoInJson = () => (
     <code className={style.info}>
-      <pre className={style.json}>{JSON.stringify(info, null, 4)}</pre>
+      <pre className={style.json}>{JSON.stringify(photoInfo, null, 4)}</pre>
     </code>
   );
 
@@ -33,7 +26,7 @@ const Details = ({ itemId, apiService }) => {
     <div className={style.details}>
       {isLoading ? <Preloader /> : null}
       {isError ? 'Error occurred' : null}
-      {info ? <InfoInJson /> : null}
+      {photoInfo ? <InfoInJson /> : null}
     </div>
   );
 };

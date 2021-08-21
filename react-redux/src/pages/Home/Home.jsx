@@ -1,65 +1,47 @@
+/* eslint-disable react-redux/useSelector-prefer-selectors */
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import CardList from '@/components/CardList/CardList';
 import SearchBar from '@/components/SearchBar/SearchBar';
 import SearchOptions from '@/components/SearchOptions/SearchOptions';
+import {
+  searchPhotos,
+  setSearchOptions,
+  submitSearchValue,
+} from '@/features/search';
 
 import style from './Home.scss';
 
-const Home = ({ apiService }) => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [searchValue, setSearchValue] = useState('');
-  const [searchResult, setSearchResult] = useState([]);
-  const [searchOptions, setSearchOptions] = useState({
-    sort: 'relevance',
-    resultsPerPage: 10,
-    currentPage: 1,
-  });
+const Home = () => {
+  const dispatch = useDispatch();
+  const searchValue = useSelector(({ search }) => search.value);
+  const searchOptionsParams = useSelector(({ search }) => search.options);
+  const searchResult = useSelector(({ search }) => search.result);
+  const isError = useSelector(({ search }) => search.isError);
+  const isLoading = useSelector(({ search }) => search.isLoading);
 
   const getDataFromApi = () => {
     if (searchValue) {
-      setIsLoading(true);
-      setIsError(false);
-
-      apiService
-        .getData(searchValue, searchOptions)
-        .then(async (data) => {
-          const photo = await Promise.all(
-            apiService.getDataWithImages(data, 4)
-          );
-          const updatedData = JSON.parse(JSON.stringify(data));
-
-          updatedData.photos.photo = photo;
-          return updatedData;
-        })
-        .then((data) => {
-          setSearchResult(data.photos);
-          setIsLoading(false);
-        })
-        .catch(() => {
-          setIsLoading(false);
-          setIsError(true);
-        });
+      dispatch(
+        searchPhotos({ value: searchValue, options: searchOptionsParams })
+      );
     }
   };
 
   const handleSearch = (e, text) => {
     e.preventDefault();
     if (text === searchValue) return;
-
-    setSearchValue(text);
+    dispatch(submitSearchValue(text));
   };
 
   const handleOptionChange = (option, value) => {
-    setSearchOptions((options) => ({
-      ...options,
-      [option]: value,
-    }));
+    const newState = { ...searchOptionsParams, [option]: value };
+    dispatch(setSearchOptions(newState));
   };
 
-  useEffect(getDataFromApi, [apiService, searchOptions, searchValue]);
+  useEffect(getDataFromApi, [dispatch, searchOptionsParams, searchValue]);
 
   return (
     <div className={style.wrapper}>
@@ -69,14 +51,14 @@ const Home = ({ apiService }) => {
       <div className={style.searchOptionsWrapper}>
         <SearchOptions
           handleOptionChange={handleOptionChange}
-          maxPages={searchResult.pages}
-          options={searchOptions}
+          maxPages={searchResult?.photos?.pages}
+          options={searchOptionsParams}
         />
       </div>
       <CardList
         isError={isError}
         isLoading={isLoading}
-        items={searchResult.photo}
+        items={searchResult?.photos?.photo}
         linkUrl="/details"
       />
     </div>

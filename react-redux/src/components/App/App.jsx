@@ -1,10 +1,6 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  useLocation,
-} from 'react-router-dom';
+import { Route, Switch, useLocation } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import Header from '@/components/Header/Header';
@@ -12,13 +8,10 @@ import About from '@/pages/About/About';
 import Details from '@/pages/Details/Details';
 import Home from '@/pages/Home/Home';
 import PageNotFound from '@/pages/PageNotFound/PageNotFound';
-import ApiService from '@/services/ApiService';
 
 import style from './App.scss';
 
 const App = () => {
-  const apiService = new ApiService();
-
   const PageContent = () => {
     const location = useLocation();
 
@@ -38,7 +31,7 @@ const App = () => {
           <div className={style.container}>
             <Switch location={location}>
               <Route
-                component={() => <Home apiService={apiService} />}
+                component={() => <Home/>}
                 exact
                 path="/"
               />
@@ -46,7 +39,7 @@ const App = () => {
               <Route
                 component={({ match }) => {
                   const { id } = match.params;
-                  return <Details apiService={apiService} itemId={id} />;
+                  return <Details itemId={id} />;
                 }}
                 exact
                 path="/details/:id"
@@ -60,10 +53,10 @@ const App = () => {
   };
 
   return (
-    <Router>
+    <>
       <Header />
       <PageContent />
-    </Router>
+    </>
   );
 };
 

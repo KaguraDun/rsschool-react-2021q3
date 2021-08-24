@@ -1,6 +1,8 @@
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
+import sortOptions from '@/models/sortOptions';
+
 import apiService from '../services/ApiService';
 
 export const searchPhotos = createAsyncThunk(
@@ -20,7 +22,7 @@ const searchSlice = createSlice({
   initialState: {
     result: [],
     options: {
-      sort: 'relevance',
+      sort: Object.keys(sortOptions)[0],
       resultsPerPage: 10,
       currentPage: 1,
     },

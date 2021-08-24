@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
+import sortOptions from '@/models/sortOptions'
+
 import style from './SearchOptions.scss';
 
 const SearchOptions = ({ handleOptionChange, options, maxPages }) => {
@@ -13,6 +15,10 @@ const SearchOptions = ({ handleOptionChange, options, maxPages }) => {
       : options.currentPage;
   };
 
+  const getOptionsList = () => Object.keys(sortOptions).map((key)=>
+    <option key={key} value={key}>{sortOptions[key]}</option>
+  )
+ 
   return (
     <div className={style.options}>
       <label className={style.label}>
@@ -22,9 +28,7 @@ const SearchOptions = ({ handleOptionChange, options, maxPages }) => {
           onChange={(e) => handleOptionChange('sort', e.target.value)}
           value={options.sort}
         >
-          <option value="relevance">relevance</option>
-          <option value="date-posted-asc">date-posted-asc</option>
-          <option value="date-posted-desc">date-posted-desc</option>
+          {getOptionsList()}
         </select>
       </label>
       <label className={style.label}>

@@ -28,18 +28,32 @@
     ],
     "react/jsx-sort-props": 1,
     "simple-import-sort/imports": 2,
-    "simple-import-sort/exports": 2
+    "simple-import-sort/exports": 2,
+    "prettier/prettier": "error"
   },
   "env": {
     "browser": true,
-    "es6": true
+    "es6": true,
+    "jest": true
   },
   "extends": [
     "eslint:recommended",
     "airbnb",
     "airbnb/hooks",
-    "prettier",
-    "plugin:react-redux/recommended"
+    "plugin:react-redux/recommended",
+    "plugin:jest/recommended",
+    "prettier"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "**/__tests__/**/*.[jt]s?(x)",
+        "**/?(*.)+(spec|test).[jt]s?(x)"
+      ],
+      "extends": [
+        "plugin:testing-library/react"
+      ]
+    }
   ],
   "globals": {
     "Atomics": "readonly",
@@ -51,9 +65,11 @@
   },
   "plugins": [
     "react",
-    "prettier",
     "simple-import-sort",
-    "react-redux"
+    "react-redux",
+    "jest",
+    "testing-library",
+    "prettier"
   ],
   "settings": {
     "import/resolver": {

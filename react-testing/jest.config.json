@@ -1,7 +1,11 @@
 {
   "collectCoverage": true,
   "testEnvironment": "jsdom",
-  "collectCoverageFrom": ["src/**/*.jsx"],
+  "collectCoverageFrom": [
+    "src/components/**/*.{js,jsx}",
+    "src/pages/**/*.{js,jsx}",
+    "src/features/**/*.{js,jsx}"
+  ],
   "setupFilesAfterEnv": ["@testing-library/jest-dom/extend-expect"],
   "transform": {
     "^.+\\.(js|jsx|ts|tsx)$": "babel-jest",

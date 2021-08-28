@@ -9,8 +9,10 @@ import { BrowserRouter, Router } from 'react-router-dom';
 import store from '../../store';
 import App from './App';
 
-const getAppStructure = (historyAdditional) => {
-  const history = createMemoryHistory();
+const getAppStructure = (
+  historyAdditional,
+  history = createMemoryHistory()
+) => {
   if (historyAdditional) history.push(historyAdditional);
 
   return (
@@ -39,6 +41,13 @@ describe('App routing', () => {
     );
     userEvent.click(screen.getByText(/about/i));
     expect(screen.getAllByText(/Lorem ipsum dolor sit amet/i)).toHaveLength(3);
+  });
+
+  it('should navigate to details page', () => {
+    const history = createMemoryHistory();
+    render(getAppStructure('/details/1', history));
+
+    expect(history.location.pathname).toMatch('/details/1');
   });
 
   it('should navigate to 404 page', () => {

@@ -1,0 +1,96 @@
+@import '@/styles/variables';
+
+@keyframes bar-1 {
+  0% {
+    top: 36px;
+    height: 128px;
+  }
+
+  50% {
+    top: 60px;
+    height: 80px;
+  }
+
+  100% {
+    top: 60px;
+    height: 80px;
+  }
+}
+
+@keyframes bar-2 {
+  0% {
+    top: 41.99999999999999px;
+    height: 116.00000000000001px;
+  }
+
+  50% {
+    top: 60px;
+    height: 80px;
+  }
+
+  100% {
+    top: 60px;
+    height: 80px;
+  }
+}
+
+@keyframes bar-3 {
+  0% {
+    top: 48px;
+    height: 104px;
+  }
+
+  50% {
+    top: 60px;
+    height: 80px;
+  }
+
+  100% {
+    top: 60px;
+    height: 80px;
+  }
+}
+
+.wrapper div {
+  position: absolute;
+  box-sizing: content-box;
+  width: 20px;
+}
+
+.wrapper div:nth-child(1) {
+  left: 40px;
+  background: $primary;
+  animation: bar-1 2.2222222222222223s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+  animation-delay: -0.4444444444444445s;
+}
+
+.wrapper div:nth-child(2) {
+  left: 90px;
+  background: $secondary;
+  animation: bar-2 2.2222222222222223s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+  animation-delay: -0.22222222222222224s;
+}
+
+.wrapper div:nth-child(3) {
+  left: 140px;
+  background: $secondary-dark;
+  animation: bar-3 2.2222222222222223s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+  animation-delay: undefineds;
+}
+
+.preloader {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0);
+}
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: translateZ(0) scale(1);
+  transform-origin: 0 0; /* see note above */
+  backface-visibility: hidden;
+}

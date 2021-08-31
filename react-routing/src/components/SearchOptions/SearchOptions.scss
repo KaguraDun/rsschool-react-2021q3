@@ -1,0 +1,59 @@
+@import '@/styles/variables';
+
+.options {
+  display: flex;
+  gap: 15px;
+  justify-content: space-around;
+}
+
+.pagination {
+  display: flex;
+  align-items: flex-end;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 18px;
+}
+
+.select {
+  height: 100%;
+  margin-top: 10px;
+  font-size: inherit;
+  border: 2px solid $secondary-dark;
+  cursor: pointer;
+
+  &:focus {
+    outline: 1px solid $secondary-dark;
+  }
+}
+
+.input {
+  width: 75px;
+  height: 100%;
+  margin-top: 10px;
+  font-size: inherit;
+  border: 2px solid $secondary;
+
+  &:focus {
+    outline: 1px solid $secondary;
+  }
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  height: 25px;
+  padding: 10px;
+  font-size: 25px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+
+  &:hover {
+    color: $white;
+    background: $secondary-dark;
+  }
+}

@@ -30,11 +30,7 @@ const App = () => {
         >
           <div className={style.container}>
             <Switch location={location}>
-              <Route
-                component={() => <Home/>}
-                exact
-                path="/"
-              />
+              <Route component={() => <Home />} exact path="/" />
               <Route component={About} exact path="/about" />
               <Route
                 component={({ match }) => {

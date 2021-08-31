@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-import sortOptions from '@/models/sortOptions'
+import sortOptions from '@/models/sortOptions';
 
 import style from './SearchOptions.scss';
 
@@ -15,10 +15,13 @@ const SearchOptions = ({ handleOptionChange, options, maxPages }) => {
       : options.currentPage;
   };
 
-  const getOptionsList = () => Object.keys(sortOptions).map((key)=>
-    <option key={key} value={key}>{sortOptions[key]}</option>
-  )
- 
+  const getOptionsList = () =>
+    Object.keys(sortOptions).map((key) => (
+      <option key={key} value={key}>
+        {sortOptions[key]}
+      </option>
+    ));
+
   return (
     <div className={style.options}>
       <label className={style.label}>

@@ -11,9 +11,9 @@ import store from './store';
 
 ReactDOM.render(
   <Provider store={store}>
-      <Router>
-        <App />
-      </Router>
+    <Router>
+      <App />
+    </Router>
   </Provider>,
   document.getElementById('root')
 );

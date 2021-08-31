@@ -1,0 +1,31 @@
+@import '../../styles/variables';
+
+$cardBorder: $primary;
+
+.card {
+  width: 250px;
+  border: 1px solid $cardBorder;
+}
+
+.thumbnail {
+  width: 100%;
+  height: auto;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 5px;
+}
+
+.title {
+  margin: 0;
+  margin-bottom: 5px;
+  overflow: hidden;
+}
+
+.item {
+  margin: 0 0 5px 0;
+  font-size: 18px;
+}

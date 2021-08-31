@@ -1,0 +1,38 @@
+$dark25: gray;
+$purple: purple;
+
+.icon {
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  border: 1px solid $dark25;
+  border-radius: 4px;
+}
+
+.checkbox {
+  margin: 0;
+  appearance: none;
+
+  &:checked + .icon {
+    background-image: url('./icons/check-mark-black-outline.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 15px;
+    border: 1px solid $purple;
+  }
+
+  &:focus + .icon {
+    box-shadow: 0 0 0 2px $purple;
+  }
+
+  &:disabled + .icon {
+    border: 1px solid $dark25;
+  }
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  text-transform: none;
+}

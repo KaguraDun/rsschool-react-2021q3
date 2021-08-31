@@ -1,0 +1,15 @@
+.input {
+  margin-top: 10px;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.error {
+  color: red;
+}

@@ -1,0 +1,71 @@
+$cardBorder: lightskyblue;
+
+.card {
+  width: 256px;
+  height: 340px;
+  border: 1px solid $cardBorder;
+
+  &:hover {
+    box-shadow: unset;
+    transform: scale(1.05);
+    transition: ease-in-out 0.1s;
+  }
+}
+
+.thumbnail {
+  display: block;
+  width: inherit;
+  max-height: 144px;
+  object-fit: cover;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 5px;
+}
+
+.cardLink {
+  &,
+  &:hover,
+  &:focus,
+  &:active {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+.title {
+  margin: 0;
+  margin-bottom: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.author {
+  margin: 0;
+  margin-bottom: 5px;
+  overflow: hidden;
+  font-style: italic;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.description {
+  height: 30%;
+  margin: 0;
+  margin-bottom: 5px;
+  overflow-y: hidden;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.date {
+  margin: 0;
+  font-size: 20px;
+}

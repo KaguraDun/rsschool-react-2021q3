@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 1440px;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+.SearchBarWrapper {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  margin-bottom: 30px;
+}
